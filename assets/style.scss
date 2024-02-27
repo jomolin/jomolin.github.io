@@ -21,9 +21,9 @@ html {
 }
 
 body {
-  background: #fff;
+  background: #404040;
   font-family: -system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  color: #404040;
+  color: #96b8ac;
   line-height: 1.7;
   font-weight: 400;
   font-size: 18px;
@@ -334,7 +334,7 @@ p > img {
 
 nav {
   float: right;
-  margin-top: 10px; // @TODO: Vertically middle align
+  margin-top: 0px; // @TODO: Vertically middle align
   font-family: $helveticaNeue;
   font-size: 18px;
 
