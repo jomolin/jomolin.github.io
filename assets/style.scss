@@ -21,9 +21,9 @@ html {
 }
 
 body {
-  background: #1e1f20;
+  background: #fff;
   font-family: -system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  color: #96b8ac;
+  color: #404040;
   line-height: 1.7;
   font-weight: 400;
   font-size: 18px;
@@ -39,7 +39,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: -system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  color: #96b8ac;
+  color: $darkerGray;
   font-weight: bold;
 
   line-height: 1.7;
@@ -178,11 +178,10 @@ span[data-pullquote]:before {
 
 a {
   color: $blue;
-  text-decoration: underline dotted;
+  text-decoration: none;
 	cursor: pointer;
   &:hover, &:active {
-    color: #96b8ac;
-    text-decoration: underline;
+    color: $blue;
   }
 }
 
@@ -335,7 +334,7 @@ p > img {
 
 nav {
   float: right;
-  margin-top: 10px; // @TODO: Vertically middle align
+  margin-top: 23px; // @TODO: Vertically middle align
   font-family: $helveticaNeue;
   font-size: 18px;
 
