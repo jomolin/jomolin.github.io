@@ -4,26 +4,20 @@ title: About
 permalink: /about/
 ---
 
-[Reverie](https://github.com/amitmerchant1990/reverie) is a Jekyll theme which is simple and opinionated. It's actually a fork of [jekyll-now](https://github.com/barryclark/jekyll-now) with some additional features and personal touches which I've implemented to suit my needs for [my blog](https://www.amitmerchant.com).
+# Call me Joe.
 
-This is a plug-and-play Jekyll theme which you can use on GitHub Pages without even setting up a local environment.
+I’m an educator looking to reach the most students in the most effective way, even if I fail at it for years until I learn how. I have had a moderately successful career teaching English for Speakers of Other Languages (ESOL) in South Korea for 10 years and am currently on my way to taking the next step and becoming a full time teacher in New Zealand, after obtaining my full teaching license here.
 
-## Features
+I’m not a naturally talented writer, but I’ll do my best to keep everything as understandable as possible. But, when I get excited I reserve the right to ramble as long as I wish.
 
-- Command-line free fork-first workflow, using GitHub.com to create, customize and post to your blog
-- Fully responsive and mobile optimized base theme
-- Sass/Coffeescript support using Jekyll 2.0
-- Free hosting on your GitHub Pages user site
-- All the SEO goodies comes in-built
-- Markdown blogging
-- Syntax highlighting using Pygments
-    - [Dracula syntax theme](https://draculatheme.com/) included
-- Disqus commenting
-- Google Analytics integration
-- Fuzzy search across blog posts
-- Pagination of posts works out-of-the-box.
-- Categorize posts out-of-the box
-- RSS Feed
-- In-built sitemap
+## Born in the U.S.A.
 
-Learn more about it [here](https://github.com/amitmerchant1990/reverie) on how to get started.
+I spent my formative years on Long Island in New York not knowing what I wanted to do with my life. Then I studied Sound Design in Savannah, GA, still not knowing what I wanted to do with my life. I had a brief stint in film, television, and radio and moved to Los Angeles finally finding out that is not what I wanted to do with my life.
+
+## Worked in South Korea for 10 years.
+
+I moved to South Korea to try teaching at the suggestion of a former classmate and these were the most exciting, frustrating, and enlightening years of my life. I have to thank Korea for helping me figure out that I really do want to be an educator.
+
+## Currently living in New Zealand.
+
+I am currently in New Zealand studying to get my teaching license and finally move up in my career.
