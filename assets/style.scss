@@ -310,7 +310,7 @@ p > img {
 
 .site-name {
   margin: 0;
-  color: $green;
+  color: $white;
   cursor: pointer;
   font-family: $helveticaNeue;
   font-weight: 300;
@@ -325,7 +325,7 @@ p > img {
 
 .site-description {
   margin: -5px 0 0 0;
-  color: $green;
+  color: $white;
   font-size: 16px;
 
   @include mobile {
@@ -348,14 +348,14 @@ nav {
 
   a {
     margin-left: 20px;
-    color: $green;
+    color: $white;
     text-align: right;
     font-weight: 300;
     letter-spacing: 1px;
 
     @include mobile {
       margin: 0 10px;
-      color: $purple;
+      color: $white;
     }
   }
 }
