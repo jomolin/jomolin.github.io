@@ -1,2 +1,2 @@
-# jomolin.github.io
+# The Deli
 new blog, who dis
