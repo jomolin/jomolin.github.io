@@ -166,8 +166,11 @@
                             currentPath.push(item.name);
                             renderColumns();
                         } else {
-                            // Open file in new tab
-                            window.open(item.html_url, '_blank');
+                            // Open rendered file on GitHub Pages
+                            const filePath = currentPath.length > 0 
+                                ? currentPath.join('/') + '/' + item.name 
+                                : item.name;
+                            window.open(`https://${username}.github.io/${filePath}`, '_blank');
                         }
                     });
 
