@@ -335,6 +335,8 @@
             margin-left: auto;
             flex-shrink: 0;
             transition: all 0.2s;
+            padding: 0;
+            line-height: 1;
         }
 
         .lesson-info-btn:hover {
@@ -358,6 +360,12 @@
             margin-right: 5px;
             flex-shrink: 0;
             transition: all 0.2s;
+            padding: 0;
+            line-height: 1;
+        }
+
+        .lesson-pin-btn::after {
+            content: '⚑';
         }
 
         .lesson-pin-btn:hover {
@@ -675,10 +683,10 @@
             </div>
 
             <div class="controls">
-                <button class="btn btn-primary" id="markNextBtn">Mark Next Lesson Complete</button>
-                <button class="btn btn-danger" id="resetBtn">Reset All Progress</button>
-                <button class="btn btn-success" id="exportBtn">Export Data</button>
-                <button class="btn btn-primary" id="importBtn">Import Data</button>
+                <button class="btn btn-primary" id="markNextBtn">Mark Next Complete →</button>
+                <button class="btn btn-danger" id="resetBtn">Reset ↻</button>
+                <button class="btn btn-success" id="exportBtn">Export ⤓</button>
+                <button class="btn btn-primary" id="importBtn">Import ⤒</button>
                 <input type="file" id="importFile" accept=".json" style="display: none;">
             </div>
 
@@ -1115,7 +1123,7 @@
                             ${lessonType}
                         </div>
                         <div class="lesson-top-right">
-                            <button class="lesson-pin-btn" title="Pin this lesson to a specific day">📌</button>
+                            <button class="lesson-pin-btn" title="Pin this lesson to a specific day"></button>
                         </div>
                         <div class="lesson-bottom-right">
                             <button class="lesson-info-btn" title="View lesson details">i</button>
@@ -1204,7 +1212,7 @@
                 // Check for pinned status
                 const pinDay = this.getPinnedDay(lesson);
                 if (pinDay) {
-                    tags.push({ type: 'pinned', text: `📌 D${pinDay}` });
+                    tags.push({ type: 'pinned', text: `⚑ D${pinDay}` });
                 }
 
                 // Check for key lesson
@@ -1661,7 +1669,7 @@
                 const currentPin = this.getPinnedDay(lesson);
                 html += `
                     <div class="pin-selector">
-                        <span class="pin-selector-label">📌 Pin to Day:</span>
+                        <span class="pin-selector-label">⚑ Pin to Day:</span>
                         <button class="pin-day-btn ${currentPin === '1' ? 'active' : ''}" data-day="1">1</button>
                         <button class="pin-day-btn ${currentPin === '2' ? 'active' : ''}" data-day="2">2</button>
                         <button class="pin-day-btn ${currentPin === '3' ? 'active' : ''}" data-day="3">3</button>
@@ -1743,14 +1751,14 @@
                 const prevArrow = document.createElement('button');
                 prevArrow.className = 'lesson-nav-arrow prev';
                 prevArrow.id = 'lessonNavPrev';
-                prevArrow.innerHTML = '◀';
+                prevArrow.innerHTML = '◄';
                 if (!prevLesson) prevArrow.disabled = true;
                 modalWrapper.appendChild(prevArrow);
                 
                 const nextArrow = document.createElement('button');
                 nextArrow.className = 'lesson-nav-arrow next';
                 nextArrow.id = 'lessonNavNext';
-                nextArrow.innerHTML = '▶';
+                nextArrow.innerHTML = '►';
                 if (!nextLesson) nextArrow.disabled = true;
                 modalWrapper.appendChild(nextArrow);
 
@@ -1823,7 +1831,7 @@
                 let html = `
                     <p style="margin-bottom: 15px; color: #555;">Select which day to pin this lesson to, or select "None" to remove the pin.</p>
                     <div class="pin-selector">
-                        <span class="pin-selector-label">📌 Pin to Day:</span>
+                        <span class="pin-selector-label">⚑ Pin to Day:</span>
                         <button class="pin-day-btn ${currentPin === '1' ? 'active' : ''}" data-day="1">Day 1</button>
                         <button class="pin-day-btn ${currentPin === '2' ? 'active' : ''}" data-day="2">Day 2</button>
                         <button class="pin-day-btn ${currentPin === '3' ? 'active' : ''}" data-day="3">Day 3</button>
