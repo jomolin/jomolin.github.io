@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>~/newtab/setup</title>
+    <link rel="stylesheet" href="https://unpkg.com/terminal.css@0.7.4/dist/terminal.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .setup-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        .setup-section {
+            margin-bottom: 30px;
+        }
+        .setup-section h2 {
+            margin-bottom: 10px;
+            border-bottom: 1px solid var(--primary-color);
+            padding-bottom: 5px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            background: var(--background-color);
+            border: 1px solid var(--secondary-color);
+            color: var(--font-color);
+            font-family: inherit;
+        }
+        textarea {
+            min-height: 100px;
+            font-family: monospace;
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            background: transparent;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            cursor: pointer;
+            font-family: inherit;
+        }
+        button:hover {
+            background: var(--primary-color);
+            color: var(--background-color);
+        }
+        .help-text {
+            font-size: 0.9em;
+            opacity: 0.7;
+            margin-top: -10px;
+            margin-bottom: 15px;
+        }
+        .success-message {
+            background: var(--primary-color);
+            color: var(--background-color);
+            padding: 10px;
+            margin-bottom: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body class="terminal">
+    <div class="setup-container">
+        <div class="window">
+            <div class="window-title">newtab configuration</div>
+            <div class="window-content">
+                <div id="success-message" class="success-message">
+                    ✓ Configuration saved! Return to <a href="index.html" style="color: inherit; text-decoration: underline;">homepage</a>
+                </div>
+
+                <!-- Personal Info -->
+                <div class="setup-section">
+                    <h2>Personal Info</h2>
+                    
+                    <label for="username">Username/Name</label>
+                    <input type="text" id="username" placeholder="joseph">
+                    <div class="help-text">Displayed in header (e.g., "joseph@newtab:~$")</div>
+                    
+                    <label for="city">City</label>
+                    <input type="text" id="city" placeholder="Auckland">
+                    <div class="help-text">For weather display</div>
+                    
+                    <label for="imood-user">iMood Username</label>
+                    <input type="text" id="imood-user" placeholder="jomolin">
+                    <div class="help-text">Your iMood profile username</div>
+                </div>
+
+                <!-- Speed Dial -->
+                <div class="setup-section">
+                    <h2>Speed Dial Links</h2>
+                    <label for="speed-dial">Links (one per line: name|url)</label>
+                    <textarea id="speed-dial" placeholder="tildes|https://tildes.net
+anna's archive|https://annas-archive.org
+github|https://github.com"></textarea>
+                    <div class="help-text">Format: name|url (pipe-separated)</div>
+                </div>
+
+                <!-- RSS Feeds -->
+                <div class="setup-section">
+                    <h2>RSS Feeds</h2>
+                    <label for="rss-feeds">Feed URLs (one per line)</label>
+                    <textarea id="rss-feeds" placeholder="https://example.com/feed
+https://another-site.com/rss.xml"></textarea>
+                    <div class="help-text">One URL per line, max ~13 feeds recommended</div>
+                </div>
+
+                <!-- Calendar -->
+                <div class="setup-section">
+                    <h2>Google Calendar</h2>
+                    
+                    <label for="calendar-api-key">API Key (optional, for real-time sync)</label>
+                    <input type="text" id="calendar-api-key" placeholder="AIza...">
+                    <div class="help-text">Restrict to your domain in Google Cloud Console</div>
+                    
+                    <label for="calendar-ids">Calendar IDs (one per line, for API method)</label>
+                    <textarea id="calendar-ids" placeholder="your-email@gmail.com
+024m9nafd8o1i90frurse4l7l4@group.calendar.google.com"></textarea>
+                    
+                    <label for="calendar-public-urls">Public iCal URLs (one per line, alternative to API)</label>
+                    <textarea id="calendar-public-urls" placeholder="https://calendar.google.com/calendar/ical/CALENDAR_ID/public/basic.ics"></textarea>
+                    <div class="help-text">Public URLs have 12-24 hour sync delay but are free</div>
+                </div>
+
+                <!-- Radio Stations -->
+                <div class="setup-section">
+                    <h2>Radio Stations</h2>
+                    <label for="radio-stations">Stations (one per line: name|stream_url)</label>
+                    <textarea id="radio-stations" placeholder="NTS 1|https://stream-url.com/stream.mp3
+Lo-Fi|https://another-stream.com/lofi"></textarea>
+                    <div class="help-text">Format: name|url (pipe-separated)</div>
+                </div>
+
+                <!-- Import/Export -->
+                <div class="setup-section">
+                    <h2>Import/Export Configuration</h2>
+                    
+                    <div class="button-group">
+                        <button id="export-btn">Export Config</button>
+                        <button id="import-btn">Import Config</button>
+                        <input type="file" id="import-file" accept=".json" style="display: none;">
+                    </div>
+                    <div class="help-text">Save your config to a file or load a previous config</div>
+                </div>
+
+                <!-- Save Button -->
+                <div class="button-group">
+                    <button id="save-btn" style="background: var(--primary-color); color: var(--background-color);">Save Configuration</button>
+                    <button id="clear-btn">Clear All Data</button>
+                    <a href="index.html"><button type="button">Back to Homepage</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Load existing config from localStorage
+        function loadConfig() {
+            const config = JSON.parse(localStorage.getItem('newtab_config') || '{}');
+            
+            document.getElementById('username').value = config.username || '';
+            document.getElementById('city').value = config.city || '';
+            document.getElementById('imood-user').value = config.imoodUser || '';
+            
+            // Speed dial
+            if (config.speedDial) {
+                document.getElementById('speed-dial').value = config.speedDial
+                    .map(item => `${item.name}|${item.url}`)
+                    .join('\n');
+            }
+            
+            // RSS
+            if (config.rss) {
+                document.getElementById('rss-feeds').value = config.rss.join('\n');
+            }
+            
+            // Calendar
+            document.getElementById('calendar-api-key').value = config.calendarApiKey || '';
+            if (config.calendarIds) {
+                document.getElementById('calendar-ids').value = config.calendarIds.join('\n');
+            }
+            if (config.calendarPublicUrls) {
+                document.getElementById('calendar-public-urls').value = config.calendarPublicUrls.join('\n');
+            }
+            
+            // Radio
+            if (config.radio) {
+                document.getElementById('radio-stations').value = config.radio
+                    .map(item => `${item.name}|${item.url}`)
+                    .join('\n');
+            }
+        }
+
+        // Save config to localStorage
+        document.getElementById('save-btn').addEventListener('click', () => {
+            const config = {
+                username: document.getElementById('username').value.trim(),
+                city: document.getElementById('city').value.trim(),
+                imoodUser: document.getElementById('imood-user').value.trim(),
+                
+                speedDial: document.getElementById('speed-dial').value
+                    .split('\n')
+                    .filter(line => line.trim())
+                    .map(line => {
+                        const [name, url] = line.split('|').map(s => s.trim());
+                        return { name, url };
+                    }),
+                
+                rss: document.getElementById('rss-feeds').value
+                    .split('\n')
+                    .filter(line => line.trim()),
+                
+                calendarApiKey: document.getElementById('calendar-api-key').value.trim(),
+                calendarIds: document.getElementById('calendar-ids').value
+                    .split('\n')
+                    .filter(line => line.trim()),
+                calendarPublicUrls: document.getElementById('calendar-public-urls').value
+                    .split('\n')
+                    .filter(line => line.trim()),
+                
+                radio: document.getElementById('radio-stations').value
+                    .split('\n')
+                    .filter(line => line.trim())
+                    .map(line => {
+                        const [name, url] = line.split('|').map(s => s.trim());
+                        return { name, url };
+                    })
+            };
+            
+            localStorage.setItem('newtab_config', JSON.stringify(config));
+            
+            // Show success message
+            document.getElementById('success-message').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('success-message').style.display = 'none';
+            }, 5000);
+        });
+
+        // Export config
+        document.getElementById('export-btn').addEventListener('click', () => {
+            const config = localStorage.getItem('newtab_config') || '{}';
+            const blob = new Blob([config], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'newtab-config.json';
+            a.click();
+            URL.revokeObjectURL(url);
+        });
+
+        // Import config
+        document.getElementById('import-btn').addEventListener('click', () => {
+            document.getElementById('import-file').click();
+        });
+
+        document.getElementById('import-file').addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                try {
+                    const config = JSON.parse(event.target.result);
+                    localStorage.setItem('newtab_config', JSON.stringify(config));
+                    loadConfig();
+                    document.getElementById('success-message').textContent = '✓ Configuration imported successfully!';
+                    document.getElementById('success-message').style.display = 'block';
+                    setTimeout(() => {
+                        document.getElementById('success-message').style.display = 'none';
+                    }, 5000);
+                } catch (error) {
+                    alert('Error importing config: ' + error.message);
+                }
+            };
+            reader.readAsText(file);
+        });
+
+        // Clear all data
+        document.getElementById('clear-btn').addEventListener('click', () => {
+            if (confirm('Are you sure you want to clear all configuration data?')) {
+                localStorage.removeItem('newtab_config');
+                location.reload();
+            }
+        });
+
+        // Load config on page load
+        loadConfig();
+    </script>
+</body>
+</html>

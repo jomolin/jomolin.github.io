@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>~/newtab</title>
+    <!-- terminal.css -->
+    <link rel="stylesheet" href="https://unpkg.com/terminal.css@0.7.4/dist/terminal.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="terminal">
+    
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header - Full Width -->
+        <div class="window">
+            <div class="window-title">
+                <span class="title-text">joseph@newtab:~$</span>
+                <button id="theme-toggle" title="Toggle theme">☀</button>
+            </div>
+            <div class="window-content" id="header-content">
+                <div id="header-left">
+                    <pre id="weather" class="loading">Loading...</pre>
+                </div>
+                <div id="header-center">
+                    <div id="clock"></div>
+                    <div id="date"></div>
+                </div>
+                <div id="header-right">
+                    <div id="mood-label">current mood:</div>
+                    <div id="imood-status">
+                        <a href="https://www.imood.com/users/jomolin" target="_blank" rel="noopener noreferrer">
+                            <img src="https://moods.imood.com/display/uname-jomolin/fg-000000/trans-1/imood.gif" alt="Current mood" id="imood-badge">
+                        </a>
+                        <button id="imood-update" title="Update mood">✎</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Middle Row: Agenda | Feeds -->
+        <div class="middle-row">
+            <!-- Calendar -->
+            <div class="window">
+                <div class="window-title">
+                    <span class="title-text">agenda // today</span>
+                    <a href="https://calendar.google.com/calendar/u/0/r/week?opentasks=1" target="_blank" rel="noopener noreferrer" title="Open Google Calendar">⇱</a>
+                </div>
+                <div class="window-content">
+                    <div id="calendar">Loading calendar...</div>
+                </div>
+            </div>
+
+            <!-- RSS Feed -->
+            <div class="window">
+                <div class="window-title">feeds</div>
+                <div class="window-content">
+                    <div id="rss-feed">Loading feeds...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Row: Speed Dial | Radio -->
+        <div class="bottom-row">
+            <!-- Speed Dial -->
+            <div class="window">
+                <div class="window-title">speed dial</div>
+                <div class="window-content">
+                    <nav id="speed-dial"></nav>
+                </div>
+            </div>
+
+            <!-- Radio -->
+            <div class="window" id="radio-window">
+                <div class="window-title">
+                    <span class="title-text">radio</span>
+                    <div id="radio-title-info">
+                        <div id="station-display">» NO STATION «</div>
+                        <div id="station-dropdown-custom" style="display: none;"></div>
+                        <span id="radio-time">00:00</span>
+                    </div>
+                </div>
+                <div class="window-content">
+                    <div id="radio-player">
+                        <audio id="audio-player" preload="metadata"></audio>
+                        <div id="radio-controls">
+                            <div id="radio-buttons">
+                                <button id="shuffle-btn" class="btn-radio" title="Random">⇄</button>
+                                <button id="prev-btn" class="btn-radio" title="Previous">◃◃</button>
+                                <button id="play-pause-btn" class="btn-radio" title="Play/Pause">▶</button>
+                                <button id="next-btn" class="btn-radio" title="Next">▹▹</button>
+                                <button id="stop-btn" class="btn-radio" title="Stop">◼</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Button (Bottom Left) -->
+    <button id="settings-btn" title="Open Settings">⚙</button>
+
+    <!-- Settings Sidebar -->
+    <div id="settings-sidebar">
+        <div class="sidebar-header">
+            <h3>settings</h3>
+            <button id="close-sidebar">✕</button>
+        </div>
+        <div class="sidebar-content">
+            <fieldset>
+                <legend>Personal Info</legend>
+                <label for="sidebar-username">Username</label>
+                <input type="text" id="sidebar-username" placeholder="joseph">
+                <label for="sidebar-city">City</label>
+                <input type="text" id="sidebar-city" placeholder="Auckland">
+                <label for="sidebar-imood-user">iMood Username</label>
+                <input type="text" id="sidebar-imood-user" placeholder="jomolin">
+            </fieldset>
+
+            <fieldset>
+                <legend>Speed Dial</legend>
+                <label for="sidebar-speed-dial">Links (name|url)</label>
+                <textarea id="sidebar-speed-dial" rows="4" placeholder="tildes|https://tildes.net"></textarea>
+            </fieldset>
+
+            <fieldset>
+                <legend>RSS Feeds</legend>
+                <label for="sidebar-rss-feeds">URLs (one per line)</label>
+                <textarea id="sidebar-rss-feeds" rows="4" placeholder="https://example.com/feed"></textarea>
+            </fieldset>
+
+            <fieldset>
+                <legend>Calendar</legend>
+                <label for="sidebar-calendar-api-key">API Key</label>
+                <input type="text" id="sidebar-calendar-api-key" placeholder="AIza...">
+                <label for="sidebar-calendar-ids">Calendar IDs</label>
+                <textarea id="sidebar-calendar-ids" rows="3" placeholder="your-email@gmail.com"></textarea>
+                <label for="sidebar-calendar-public-urls">Public URLs</label>
+                <textarea id="sidebar-calendar-public-urls" rows="3" placeholder="https://calendar.google.com/..."></textarea>
+            </fieldset>
+
+            <fieldset>
+                <legend>Radio</legend>
+                <label for="sidebar-radio-stations">Stations (name|url)</label>
+                <textarea id="sidebar-radio-stations" rows="4" placeholder="NTS 1|https://stream.mp3"></textarea>
+            </fieldset>
+
+            <fieldset>
+                <legend>Import/Export</legend>
+                <button type="button" id="export-btn" class="btn">Export</button>
+                <button type="button" id="import-btn" class="btn">Import</button>
+                <input type="file" id="import-file" accept=".json" style="display: none;">
+            </fieldset>
+
+            <button type="button" id="save-btn" class="btn btn-primary">Save Configuration</button>
+            <button type="button" id="clear-btn" class="btn btn-error">Clear All Data</button>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+    <script src="setup-sidebar.js"></script>
+</body>
+</html>
